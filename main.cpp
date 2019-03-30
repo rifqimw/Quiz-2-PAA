@@ -32,6 +32,9 @@ void BFS(int x, int y) {
 		if(isVisited[coord.first][coord.second] || board[coord.first][coord.second]=='X') {
 			Queue.pop();
 			continue;
+		} else if(coord.first > size-1 || coord.second > size-1 || coord.first < 0 || coord.second < 0) {
+			Queue.pop();
+			continue;
 		}
 		int counter = 0; char tempcount;
 		
@@ -45,19 +48,16 @@ void BFS(int x, int y) {
 		if(board[coord.first+1][coord.second-1]=='X') counter+=1; 
 		
 		if(counter>0) {
-			board[coord.first][coord.second] = (char)counter;
+			tempcount = counter + '0';
+			board[coord.first][coord.second] = tempcount;
 		} else {
 			board[coord.first][coord.second] = '.';
 		}
 		
 		if(!isVisited[coord.first][coord.second-1] && board[coord.first][coord.second-1]!='X') Queue.push(make_pair(coord.first,coord.second-1));
-		if(!isVisited[coord.first-1][coord.second-1] && board[coord.first-1][coord.second-1]!='X') Queue.push(make_pair(coord.first-1,coord.second-1));
 		if(!isVisited[coord.first-1][coord.second] && board[coord.first-1][coord.second]!='X') Queue.push(make_pair(coord.first-1,coord.second));
-		if(!isVisited[coord.first-1][coord.second+1] && board[coord.first-1][coord.second+1]!='X' ) Queue.push(make_pair(coord.first-1,coord.second+1));
 		if(!isVisited[coord.first][coord.second+1] && board[coord.first][coord.second+1]!='X') Queue.push(make_pair(coord.first,coord.second+1));
-		if(!isVisited[coord.first+1][coord.second+1] && board[coord.first+1][coord.second+1]!='X') Queue.push(make_pair(coord.first+1,coord.second+1));
-		if(!isVisited[coord.first+1][coord.second] && board[coord.first+1][coord.second]!='X') Queue.push(make_pair(coord.first+1,coord.second));
-		if(!isVisited[coord.first+1][coord.second-1] && board[coord.first+1][coord.second-1]!='X' ) Queue.push(make_pair(coord.first+1,coord.second-1));
+		if(!isVisited[coord.first+1][coord.second] && board[coord.first+1][coord.second]!='X' ) Queue.push(make_pair(coord.first+1,coord.second));
 		
 		isVisited[coord.first][coord.second] = 1;
 		Queue.pop();
