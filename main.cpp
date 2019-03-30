@@ -8,9 +8,16 @@ int isVisited[30][30];
 int size;
 queue <pair <int, int> > Queue;
 
+void printall() {
+	for(int i=0; i<size; i++) {
+		for(int j=0; j<size; j++) printf("%c ", board[i][j]);
+		printf("\n");
+	}
+}
+
 void print() {
 	for(int i=0; i<size; i++) 
-	{ for(int j=1; j<size; j++) {
+	{ for(int j=0; j<size; j++) {
 		if(board[i][j]=='X') printf("o ");
 		else printf("%c ", board[i][j]); } 
 	printf("\n"); } 
@@ -102,6 +109,7 @@ int main() {
 		minePost.pop();
 	}
 	doMineSweep();
+	printall();
 	printf("End! :)");
 	return 0;
 }
