@@ -8,6 +8,14 @@ int isVisited[30][30];
 int size;
 queue <pair <int, int> > Queue;
 
+void print() {
+	for(int i=0; i<size; i++) 
+	{ for(int j=1; j<size; j++) {
+		if(board[i][j]=='X') printf("o ");
+		else printf("%c ", board[i][j]); } 
+	printf("\n"); } 
+}
+
 void BFS(int x, int y) {
 	pair <int,int> coord = make_pair(x,y);
 	Queue.push(coord);
@@ -94,5 +102,6 @@ int main() {
 		minePost.pop();
 	}
 	doMineSweep();
+	printf("End! :)");
 	return 0;
 }
