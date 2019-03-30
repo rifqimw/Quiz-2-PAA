@@ -1,4 +1,4 @@
-### MineSweeper
+# MineSweeper
 
 Minesweeper is a game that played by one player, played by opening all the field while evading the bombs by marking them with flags and clicking the safe field. The player will click on a square in the field to open the square. The square’s contents are a bomb, a number, or a blank square.
 
