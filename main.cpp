@@ -49,20 +49,29 @@ void BFS(int x, int y) {
 	}
 }
 
-
 bool isFinished() {
-	for(int i=0; i<size; i++) for(int j=0; j<size; j++) if(board[i][j]!='o') return 1;
-	return 0;
+	int status=0;
+	for(int i=0; i<size; i++) for(int j=0; j<size; j++) if(board[i][j]=='o') status-=1;
+	if(status==0) return 1;
+	else return 0;
 }
 
 void doMineSweep() {
 	int x, y;
-	while(true) {	
-		print();
-		if(isFinished()) { printf("You win ?"); return; }
+	print();
+	while(true) {		
+		if(isFinished()) {
+			printf("You win ?\n");
+			return;
+		}
 		printf("Mau mencoba klik di koordinat (x,y) yang mana? : ");
 		scanf("%d %d", &x, &y);
+		if(board[x][y]=='X') {
+			printf("You lose!\n");
+			return;
+		}
 		BFS(x, y);
+		if(!isFinished())print();
 	}	
 }
 
